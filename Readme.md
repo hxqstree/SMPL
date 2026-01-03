@@ -35,36 +35,7 @@ cd CLIP && python setup.py develop && cd ..
 :   :      
 ```
 
-4. Download the weights of DETR and put them in `checkpoints/`.
 
-
-| Dataset | DETR weights |
-| --- | --- |
-| HICO-DET | [weights](https://drive.google.com/file/d/1BQ-0tbSH7UC6QMIMMgdbNpRw2NcO8yAD/view?usp=sharing)  |
-| V-COCO | [weights](https://drive.google.com/file/d/1AIqc2LBkucBAAb_ebK9RjyNS5WmnA4HV/view?usp=sharing) |
-
-
-```
-|- SMPL
-|   |- checkpoints
-|   |   |- detr-r50-hicodet.pth
-|   |   |- detr-r50-vcoco.pth
-:   :   :
-```
-
-### Pre-extracted Features
-Download the pre-extracted features from [HERE](https://drive.google.com/file/d/1lUnUQD3XcWyQdwDHMi74oXBcivibGIWN/view?usp=sharing) and the pre-extracted bboxes from [HERE](https://drive.google.com/file/d/19Mo1d4J6xX9jDNvDJHEWDpaiPKxQHQsT/view?usp=sharing). The downloaded files have to be placed as follows.
-
-```
-|- SMPL
-|   |- hicodet_pkl_files
-|   |   |- union_embeddings_cachemodel_crop_padding_zeros_vitb16.p
-|   |   |- hicodet_union_embeddings_cachemodel_crop_padding_zeros_vit336.p
-|   |- vcoco_pkl_files
-|   |   |- vcoco_union_embeddings_cachemodel_crop_padding_zeros_vit16.p
-|   |   |- vcoco_union_embeddings_cachemodel_crop_padding_zeros_vit336.p
-:   :      
-```
 
 ### Train/Test
 
