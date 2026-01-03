@@ -1,0 +1,116 @@
+## [ECCV 2024] Exploring Conditional Multi-Modal Prompts for Zero-shot HOI Detection
+
+[Arxiv](https://arxiv.org/abs/2408.02484), [Project Page](https://sites.google.com/view/eccv24-smpl/%E9%A6%96%E9%A1%B5)
+
+### Dataset 
+Follow the process of [UPT](https://github.com/fredzzhang/upt).
+
+The downloaded files should be placed as follows. Otherwise, please replace the default path to your custom locations.
+```
+|- SMPL
+|   |- hicodet
+|   |   |- hico_20160224_det
+|   |       |- annotations
+|   |       |- images
+|   |- vcoco
+|   |   |- mscoco2014
+|   |       |- train2014
+|   |       |-val2014
+:   :      
+```
+
+### Dependencies
+1. Follow the environment setup in [UPT](https://github.com/fredzzhang/upt).
+
+2. Our code is built upon [CLIP](https://github.com/openai/CLIP). Install the local package of CLIP:
+```
+cd CLIP && python setup.py develop && cd ..
+```
+
+3. Download the CLIP weights to `checkpoints/pretrained_clip`.
+```
+|- SMPL
+|   |- checkpoints
+|   |   |- pretrained_clip
+|   |       |- ViT-B-16.pt
+|   |       |- ViT-L-14-336px.pt
+:   :      
+```
+
+4. Download the weights of DETR and put them in `checkpoints/`.
+
+
+| Dataset | DETR weights |
+| --- | --- |
+| HICO-DET | [weights](https://drive.google.com/file/d/1BQ-0tbSH7UC6QMIMMgdbNpRw2NcO8yAD/view?usp=sharing)  |
+| V-COCO | [weights](https://drive.google.com/file/d/1AIqc2LBkucBAAb_ebK9RjyNS5WmnA4HV/view?usp=sharing) |
+
+
+```
+|- SMPL
+|   |- checkpoints
+|   |   |- detr-r50-hicodet.pth
+|   |   |- detr-r50-vcoco.pth
+:   :   :
+```
+
+### Pre-extracted Features
+Download the pre-extracted features from [HERE](https://drive.google.com/file/d/1lUnUQD3XcWyQdwDHMi74oXBcivibGIWN/view?usp=sharing) and the pre-extracted bboxes from [HERE](https://drive.google.com/file/d/19Mo1d4J6xX9jDNvDJHEWDpaiPKxQHQsT/view?usp=sharing). The downloaded files have to be placed as follows.
+
+```
+|- SMPL
+|   |- hicodet_pkl_files
+|   |   |- union_embeddings_cachemodel_crop_padding_zeros_vitb16.p
+|   |   |- hicodet_union_embeddings_cachemodel_crop_padding_zeros_vit336.p
+|   |- vcoco_pkl_files
+|   |   |- vcoco_union_embeddings_cachemodel_crop_padding_zeros_vit16.p
+|   |   |- vcoco_union_embeddings_cachemodel_crop_padding_zeros_vit336.p
+:   :      
+```
+
+### Train/Test
+
+Please follow the commands in ```./scripts```.
+
+
+
+### Model Zoo
+
+| Method          | Type  | Unseen↑ | Seen↑ | Full↑ | HM↑   |
+|-----------------|-------|---------|-------|-------|-------|
+| SMPL (Ours)     | RF-UC | 29.45   | 32.87 | 32.18 | 31.07 |
+| SMPL† (Ours)    | RF-UC | 35.98   | 37.42 | 37.13 | 36.69 |
+| SMPL (Ours)     | NF-UC | 32.09   | 29.71 | 30.18 | 30.85 |
+| SMPL† (Ours)    | NF-UC | 33.52   | 35.53 | 35.13 | 34.50 |
+| SMPL (Ours)     | UO    | 33.76   | 31.15 | 31.59 | 32.40 |
+| SMPL† (Ours)    | UO    | 39.67   | 36.15 | 36.74 | 37.83 |
+| SMPL (Ours)     | UV    | 26.23   | 32.75 | 31.84 | 29.13 |
+| SMPL† (Ours)    | UV    | 30.84   | 37.28 | 36.38 | 33.75 |
+
+
+### Model Weights
+
+You can download the model weights from:
+```
+Link: https://pan.baidu.com/s/1XyWG2qjEXWghEYcc4-PGFA?pwd=zkh5
+Password: zkh5
+```
+
+Or you can download the SMPL weights from huggingface:
+```
+https://huggingface.co/lttt/SMPL/tree/main
+```
+
+## Citation
+If you find our paper and/or code helpful, please consider citing:
+```
+@article{ting2024SMPL,
+  title={Exploring Conditional Multi-Modal Prompts for Zero-shot HOI Detection},
+  author={Ting Lei and Shaofeng Yin and Yuxin Peng and Yang Liu},
+  year={2024},
+  booktitle={ECCV},
+  organization={IEEE},
+}
+```
+
+
